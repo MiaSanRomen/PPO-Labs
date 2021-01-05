@@ -1,0 +1,47 @@
+<resources>
+    <string name="AppName">My Timer</string>
+    <string name="Add">+</string>
+    <string name="Work">Work</string>
+    <string name="Prepare">Prepare</string>
+    <string name="Start">Start</string>
+    <string name="Pause">Pause</string>
+    <string name="Calm">Rest</string>
+    <string name="Final">Финиш</string>
+    <string name="Name">Name</string>
+    <string name="Cycle">Repeats</string>
+    <string name="Set">Sets</string>
+    <string name="Sleep">Stop</string>
+    <string name="RestBTW">Rest between sets</string>
+    <string name="Exit">Do you want to quit timer?</string>
+    <string name="Сancel">Do you want to exit the timer editor?</string>
+    <string name="SaveExit">Do you want to exit the timer editor and save timer?</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
+    <string name="Save">Save</string>
+    <string name="Reset">Reset</string>
+    <string name="Timer">Timer</string>
+    <string name="Minus">-</string>
+    <string name="Properties">Properties</string>
+    <string name="On">On</string>
+    <string name="Off">Off</string>
+    <string name="Delete">Delete</string>
+    <string name="DeleteAll">Delete all</string>
+    <string name="FontStyle">Font style</string>
+    <string name="SetFontStyle">Set font</string>
+    <string name="ChooseFontStyle">Choose font style</string>
+    <string name="GetLanguage">Get language</string>
+    <string name="LanguageApp">Language app</string>
+    <string name="Language">Language</string>
+    <string name="NightTheme">Night theme</string>
+    <string name="Finish">Finished timer</string>
+    <string name="Time">TIME</string>
+    <string name="step">STEP</string>
+    <string-array name="ListFontStyle">
+        <item>Normal</item>
+        <item>Big</item>
+    </string-array>
+    <string-array name="TextLanguage">
+        <item>Russian</item>
+        <item>English</item>
+    </string-array>
+</resources>
