@@ -1,0 +1,47 @@
+<resources>
+    <string name="AppName">My Timer</string>
+    <string name="Add">+</string>
+    <string name="Work">Работа</string>
+    <string name="Prepare">Подготовка</string>
+    <string name="Start">Старт</string>
+    <string name="Pause">Пауза</string>
+    <string name="Calm">Перерыв</string>
+    <string name="Final">Финиш</string>
+    <string name="Name">Имя</string>
+    <string name="Cycle">Повторы</string>
+    <string name="Set">Наборы</string>
+    <string name="Sleep">Остановиться</string>
+    <string name="RestBTW">Перерыв между работой</string>
+    <string name="Exit">Вы хотите выйти из таймера?</string>
+    <string name="Сancel">Вы хотите отменить создание таймера?</string>
+    <string name="SaveExit">Выйти из редактирования таймера и сохранить его?</string>
+    <string name="Yes">Да</string>
+    <string name="No">Нет</string>
+    <string name="Save">Сохранить</string>
+    <string name="Reset">Отмена</string>
+    <string name="Timer">Таймер</string>
+    <string name="Minus">-</string>
+    <string name="Properties">Свойства</string>
+    <string name="On">Включить</string>
+    <string name="Off">Включить</string>
+    <string name="Delete">Удалить</string>
+    <string name="DeleteAll">Удалить все </string>
+    <string name="FontStyle">Стиль для шрифта</string>
+    <string name="SetFontStyle">Ставит шрифт</string>
+    <string name="ChooseFontStyle">Выберите шрифт</string>
+    <string name="GetLanguage">Выберите язык</string>
+    <string name="LanguageApp">Язык в приложении</string>
+    <string name="Language">Язык</string>
+    <string name="NightTheme">Ночная тема</string>
+    <string name="Finish">Таймер завершен</string>
+    <string name="Time">ВРЕМЯ</string>
+    <string name="step">СТАДИЯ</string>
+    <string-array name="ListFontStyle">
+        <item>Нормальный</item>
+        <item>Большой</item>
+    </string-array>
+    <string-array name="TextLanguage">
+        <item>Русский</item>
+        <item>Английский</item>
+    </string-array>
+</resources>
