@@ -79,7 +79,13 @@ public class MainViewModel extends AndroidViewModel {
     }
 
     public String convert(String data){
-        String string = Converter.convert(data, getInputSpinner().getValue(), getOutputSpinner().getValue());
+        String string;
+        if(getInputSpinner().getValue().getUnit() == MainUnitEnum.TEMPERATURES){
+            string = Converter.convertTemperature(data, getInputSpinner().getValue(), getOutputSpinner().getValue());
+        }
+        else {
+            string = Converter.convert(data, getInputSpinner().getValue(), getOutputSpinner().getValue());
+        }
         setOutputData(string);
         return output.getValue();
     }
