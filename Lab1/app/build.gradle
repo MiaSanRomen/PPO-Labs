@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+apply from: 'git.gradle'
+def versionArray = getArray()
+
+android {
+    signingConfigs {
+        relase {
+            storeFile file('C:\\Users\\Andrew\\Documents\\Android store\\Keys.jks')
+            storePassword 'MiaSanRomen'
+            keyAlias 'Converter'
+            keyPassword 'MiaSanRomen'
+        }
+    }
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.example.myapplication"
+        minSdkVersion 14
+        targetSdkVersion 30
+        versionCode generateVersionCode(versionArray)
+        versionName "${versionArray[0]}.${versionArray[1]}.${versionArray[2]}"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.relase
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    productFlavors{
+        demo{
+            signingConfig signingConfigs.relase
+        }
+        full{
+            signingConfig signingConfigs.relase
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+}
