@@ -9,15 +9,22 @@ public enum AdditionalUnitEnum {
     SM(MainUnitEnum.DISTANCES, 100.0),
     KM(MainUnitEnum.DISTANCES, 0.001),
 
-    KG(MainUnitEnum.WEIGHTS, 1.0),
-    TONNA(MainUnitEnum.WEIGHTS, 0.001),
-    GRAMM(MainUnitEnum.WEIGHTS, 1000.0);
+    CELSIUS(MainUnitEnum.TEMPERATURES, 1.0, 0),
+    KELVIN(MainUnitEnum.TEMPERATURES, 0.0, 273),
+    FAHRENHEIT(MainUnitEnum.TEMPERATURES, 0.55555, 32);
 
     private MainUnitEnum unit;
     private double coefficient;
+    private double addCoefficient;
     AdditionalUnitEnum(MainUnitEnum unit, double coefficient){
         this.unit = unit;
         this.coefficient = coefficient;
+    }
+
+    AdditionalUnitEnum(MainUnitEnum unit, double coefficient, double addCoefficient){
+        this.unit = unit;
+        this.coefficient = coefficient;
+        this.addCoefficient = addCoefficient;
     }
 
     public MainUnitEnum getUnit(){
@@ -26,5 +33,9 @@ public enum AdditionalUnitEnum {
 
     public double getCoefficient(){
         return coefficient;
+    }
+
+    public double getAddCoefficient(){
+        return addCoefficient;
     }
 }
