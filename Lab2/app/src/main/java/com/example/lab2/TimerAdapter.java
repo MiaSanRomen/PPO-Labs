@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.lab2.Database.ActionsDB;
-import com.example.lab2.Database.DataBaseProvider;
 import com.example.lab2.Database.TimerModel;
 
 import java.util.List;
@@ -21,16 +20,12 @@ public class TimerAdapter extends ArrayAdapter<TimerModel> {
     private LayoutInflater inflater;
     private int layout;
     private List<TimerModel> timerModelList;
-    private DataBaseProvider db;
 
-    TimerAdapter(Context context, int resource, List<TimerModel> timerModels,
-                 DataBaseProvider db) {
+    TimerAdapter(Context context, int resource, List<TimerModel> timerModels) {
         super(context, resource, timerModels);
         this.timerModelList = timerModels;
         this.layout = resource;
-        this.db = db;
         this.inflater = LayoutInflater.from(context);
-        ActionsDB.setDb(db);
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
