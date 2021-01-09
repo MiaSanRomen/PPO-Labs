@@ -8,6 +8,7 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.lab2.Database.ActionsDB;
 import com.example.lab2.Database.DataBaseProvider;
 import com.example.lab2.Database.TimerModel;
 
@@ -27,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.ListTimer);
         TimerAdapter adapter = new TimerAdapter(this, R.layout.timers
-                , db.timerDao().getAll(), db);
+                , db.timerDao().getAll());
+        ActionsDB.setDb(db);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
