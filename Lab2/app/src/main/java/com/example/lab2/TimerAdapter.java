@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.lab2.Database.ActionsDB;
 import com.example.lab2.Database.DataBaseProvider;
 import com.example.lab2.Database.TimerModel;
 
@@ -29,6 +30,7 @@ public class TimerAdapter extends ArrayAdapter<TimerModel> {
         this.layout = resource;
         this.db = db;
         this.inflater = LayoutInflater.from(context);
+        ActionsDB.setDb(db);
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -56,7 +58,7 @@ public class TimerAdapter extends ArrayAdapter<TimerModel> {
         });
 
         viewHolder.removeButton.setOnClickListener(i -> {
-            db.timerDao().delete(timerModelList.get(position));
+            ActionsDB.actionDelete(timerModel);
             timerModelList.remove(timerModel);
             notifyDataSetChanged();
         });
