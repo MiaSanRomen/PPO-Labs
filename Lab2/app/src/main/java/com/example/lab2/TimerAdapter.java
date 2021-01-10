@@ -53,9 +53,11 @@ public class TimerAdapter extends ArrayAdapter<TimerModel> {
         });
 
         viewHolder.removeButton.setOnClickListener(i -> {
-            ActionsDB.actionDelete(timerModel);
-            timerModelList.remove(timerModel);
-            notifyDataSetChanged();
+            Context context = getContext();
+            Intent intent = new Intent(context, TimerRemove.class);
+            intent.putExtra("timerId", new int[]{timerModel.Id, 1});
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
         });
 
         viewHolder.editButton.setOnClickListener(i -> {
