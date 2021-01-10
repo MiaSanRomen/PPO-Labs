@@ -24,6 +24,7 @@
         <activity android:name=".TimerCreate"
             android:noHistory="true"/>
         <activity android:name=".MainActivity"/>
+        <activity android:name=".TimerRemove"/>
         <service android:name=".Timer"/>
     </application>
 
