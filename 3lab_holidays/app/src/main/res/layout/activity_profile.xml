@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/txt_name"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="User"
+                    android:textSize="30sp" />
+                <TextView
+                    android:id="@+id/txt_victories"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Victories: 0"
+                    android:textSize="30sp" />
+
+            </LinearLayout>
+
+
+            <ImageView
+                android:id="@+id/img_user"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/player"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_height="wrap_content"
+                android:id="@+id/username_profile"
+                android:selectAllOnFocus="true"
+                android:lines="1"
+                android:hint="Username"
+                android:inputType="text"
+                android:layout_width="fill_parent"
+                android:layout_gravity="fill_horizontal"
+                android:gravity="fill_horizontal">
+            </EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_height="wrap_content"
+                android:selectAllOnFocus="true"
+                android:lines="1"
+                android:id="@+id/email_profile"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:layout_gravity="fill_horizontal"
+                android:layout_width="match_parent">
+            </EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_height="wrap_content"
+                android:selectAllOnFocus="true"
+                android:lines="1"
+                android:id="@+id/password_profile"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:layout_gravity="fill_horizontal"
+                android:layout_width="match_parent">
+            </EditText>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_image_change"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Change avatar" />
+        <Button
+            android:id="@+id/btn_save_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save all" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

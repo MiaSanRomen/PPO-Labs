@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "958270730854",
+    "project_id": "lab-holidays",
+    "storage_bucket": "lab-holidays.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:958270730854:android:6ae2617a2f47a9fddb73a7",
+        "android_client_info": {
+          "package_name": "com.example.a3lab_holidays"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "958270730854-8itdssbdvp2fjkbeogsd70khpar4q0nh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4lx7TklXtEn7_EdSU9o9fH81HtrmeLiY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "958270730854-8itdssbdvp2fjkbeogsd70khpar4q0nh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
