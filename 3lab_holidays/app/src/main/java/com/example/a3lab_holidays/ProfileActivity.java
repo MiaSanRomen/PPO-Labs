@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -124,9 +125,15 @@ public class ProfileActivity extends AppCompatActivity {
                         Toast.makeText(ProfileActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
                         //String uploadId = mDatabaseRef.push().getKey();
                         //mDatabaseRef.child(uploadId).setValue(upload);
-                        ImageHelper image = new ImageHelper(taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
+
+                        Task<Uri> uri = taskSnapshot.getStorage().getDownloadUrl();
+                        while(!uri.isComplete());
+                        Uri url = uri.getResult();
+
+                        ImageHelper image = new ImageHelper(url.toString());
                         UserHelper.imageUrl = image.getImageUrl();
                         reference.child(UserHelper.username).child("imageUrl").setValue(image.getImageUrl());
+                        Picasso.get().load(mImageUri).into(avatar);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

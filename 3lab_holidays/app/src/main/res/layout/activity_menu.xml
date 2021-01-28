@@ -13,11 +13,29 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <Button
             android:id="@+id/btn_join"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Join game"/>
+            android:text="Join game"
+            android:layout_weight="1"/>
+
+        <EditText
+            android:id="@+id/txt_key"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Put in room key"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
 
         <Button
             android:id="@+id/btn_create"
