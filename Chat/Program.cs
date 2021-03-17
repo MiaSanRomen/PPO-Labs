@@ -1,9 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using chat;
 
 namespace Chat
 {
@@ -13,7 +15,8 @@ namespace Chat
         static int remotePort = 8001;
         static int localPort = 8001;
         static string myName;
-        static List<string> messages = new List<string>();
+        static List<MessageInOrder> messages = new List<MessageInOrder>();
+        static int count = 0;
 
         static void Main(string[] args)
         {
@@ -27,27 +30,29 @@ namespace Chat
                 Thread receiveThread = new Thread(new ThreadStart(ReceiveMessage));
                 receiveThread.Start();
                 Console.WriteLine("Successfully connected to " + remoteAddress);
-                SendMessage(); 
+                SendMessage();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
+
         private static void SendMessage()
         {
-            UdpClient sender = new UdpClient(); 
+            UdpClient sender = new UdpClient();
             try
             {
                 while (true)
                 {
-                    string message = Console.ReadLine(); 
-                    DateTime date = DateTime.Now;
-                    message = String.Format("{0} || {1} : {2}", date, myName, message);
-                    messages.Add(message);
+                    string message = Console.ReadLine();
+                    string date = DateTime.Now.ToLongTimeString();
+                    message = String.Format("{0} || {1} || {2} : {3}", messages.Count, date, myName, message);
+                    MessageInOrder messageInOrder = new MessageInOrder(messages.Count, message);
+                    messages.Add(messageInOrder);
                     WriteChat();
                     byte[] data = Encoding.Unicode.GetBytes(message);
-                    sender.Send(data, data.Length, remoteAddress, remotePort); 
+                    sender.Send(data, data.Length, remoteAddress, remotePort);
                 }
             }
             catch (Exception ex)
@@ -62,16 +67,23 @@ namespace Chat
 
         private static void ReceiveMessage()
         {
-            UdpClient receiver = new UdpClient(localPort); 
-            IPEndPoint remoteIp = null; 
+            UdpClient receiver = new UdpClient(localPort);
+            IPEndPoint remoteIp = null;
             try
             {
                 while (true)
                 {
-                    byte[] data = receiver.Receive(ref remoteIp); 
+                    byte[] data = receiver.Receive(ref remoteIp);
                     string message = Encoding.Unicode.GetString(data);
-                    messages.Add(message);
-                    WriteChat();
+                    if (message.IndexOf('|') == 0)
+                    {
+                        Console.WriteLine(message);
+                    }
+                    else
+                    {
+                        RightOrder(message);
+                        WriteChat();
+                    }
                 }
             }
             catch (Exception ex)
@@ -87,10 +99,41 @@ namespace Chat
         private static void WriteChat()
         {
             Console.Clear();
-            foreach(var message in messages)
+            foreach (var message in messages)
             {
-                Console.WriteLine(message);
+                Console.WriteLine(message.Message);
+            }
+        }
+
+        private static void RightOrder(String message)
+        {
+            int sizeOfNumber = message.IndexOf('|');
+            int index = Int32.Parse(message.Substring(0, sizeOfNumber - 1));
+            messages.OrderBy(x => x.Nomber);
+            if (messages.Count == 0)
+            {
+                messages.Add(new MessageInOrder(index, message));
+            }
+            else if (messages.LastOrDefault().Nomber == index - 1)
+            {
+                messages.Add(new MessageInOrder(index, message));
+            }
+            else
+            {
+                UdpClient sender = new UdpClient();
+                try
+                {
+                    string error = String.Format("|Your companion didn't get message no. {0} and next!", index);
+                    byte[] data = Encoding.Unicode.GetBytes(error);
+                    sender.Send(data, data.Length, remoteAddress, remotePort);
+                }
+                finally
+                {
+                    sender.Close();
+                }
+
             }
         }
     }
 }
+
