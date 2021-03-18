@@ -16,7 +16,6 @@ namespace Chat
         static int localPort = 8001;
         static string myName;
         static List<MessageInOrder> messages = new List<MessageInOrder>();
-        static int count = 0;
 
         static void Main(string[] args)
         {
@@ -77,7 +76,22 @@ namespace Chat
                     string message = Encoding.Unicode.GetString(data);
                     if (message.IndexOf('|') == 0)
                     {
-                        Console.WriteLine(message);
+                        int index = Int32.Parse(message.Substring(1));
+                        var resendMessages = messages.Where(x => x.Nomber >= index);
+                        foreach(var resendMessage in resendMessages)
+                        {
+                            UdpClient sender = new UdpClient();
+                            try
+                            {
+                                byte[] dataSend = Encoding.Unicode.GetBytes(resendMessage.Message);
+                                sender.Send(data, data.Length, remoteAddress, remotePort);
+                            }
+                            finally
+                            {
+                                sender.Close();
+                            }
+                        }
+                        Console.WriteLine("Some lost messages were resend.");
                     }
                     else
                     {
@@ -123,8 +137,8 @@ namespace Chat
                 UdpClient sender = new UdpClient();
                 try
                 {
-                    string error = String.Format("|Your companion didn't get message no. {0} and next!", index);
-                    byte[] data = Encoding.Unicode.GetBytes(error);
+                    string lostIndex = String.Format("|{0}", index - 1);
+                    byte[] data = Encoding.Unicode.GetBytes(lostIndex);
                     sender.Send(data, data.Length, remoteAddress, remotePort);
                 }
                 finally
@@ -136,4 +150,3 @@ namespace Chat
         }
     }
 }
-
