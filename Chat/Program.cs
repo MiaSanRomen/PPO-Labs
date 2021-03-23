@@ -77,21 +77,18 @@ namespace Chat
                     if (message.IndexOf('|') == 0)
                     {
                         int index = Int32.Parse(message.Substring(1));
-                        var resendMessages = messages.Where(x => x.Nomber >= index);
-                        foreach(var resendMessage in resendMessages)
+                        var resendMessage = messages.LastOrDefault(x => x.Nomber >= index);     //Will resend only lost message
+                        UdpClient sender = new UdpClient();
+                        try
                         {
-                            UdpClient sender = new UdpClient();
-                            try
-                            {
-                                byte[] dataSend = Encoding.Unicode.GetBytes(resendMessage.Message);
-                                sender.Send(data, data.Length, remoteAddress, remotePort);
-                            }
-                            finally
-                            {
-                                sender.Close();
-                            }
+                            byte[] dataSend = Encoding.Unicode.GetBytes(resendMessage.Message);
+                            sender.Send(data, data.Length, remoteAddress, remotePort);
                         }
-                        Console.WriteLine("Some lost messages were resend.");
+                        finally
+                        {
+                            sender.Close();
+                        }
+                        Console.WriteLine("Lost message was resend.");
                     }
                     else
                     {
@@ -124,29 +121,24 @@ namespace Chat
             int sizeOfNumber = message.IndexOf('|');
             int index = Int32.Parse(message.Substring(0, sizeOfNumber - 1));
             messages.OrderBy(x => x.Nomber);
-            if (messages.Count == 0)
+            for(int i=messages.LastOrDefault().Nomber; i<index; i++)    //Will go through indexes only from last recieved to new message
             {
-                messages.Add(new MessageInOrder(index, message));
-            }
-            else if (messages.LastOrDefault().Nomber == index - 1)
-            {
-                messages.Add(new MessageInOrder(index, message));
-            }
-            else
-            {
-                UdpClient sender = new UdpClient();
-                try
-                {
-                    string lostIndex = String.Format("|{0}", index - 1);
-                    byte[] data = Encoding.Unicode.GetBytes(lostIndex);
-                    sender.Send(data, data.Length, remoteAddress, remotePort);
+                if (messages.Where(x => x.Nomber == i).Count() != 0)    //If list doesn't contain message with such index, 
+                {                                                       //app will ask another client to resend only this message
+                    UdpClient sender = new UdpClient();
+                    try
+                    {
+                        string lostIndex = String.Format("|{0}", messages.LastOrDefault().Nomber++);
+                        byte[] data = Encoding.Unicode.GetBytes(lostIndex);
+                        sender.Send(data, data.Length, remoteAddress, remotePort);
+                    }
+                    finally
+                    {
+                        sender.Close();
+                    }
                 }
-                finally
-                {
-                    sender.Close();
-                }
-
             }
+            messages.Add(new MessageInOrder(index, message));       //Will save recieved message in any case
         }
     }
 }
