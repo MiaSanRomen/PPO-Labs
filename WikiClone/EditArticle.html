@@ -1,0 +1,84 @@
+<! DOCTYPE html>
+<head xmlns="http://www.w3.org/1999/html">
+	<title>Edit article</title>
+	<link href="css/Main.css" type="text/css" rel="stylesheet">
+	<link href="css/crud.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<header>
+	<ul class="header_navbar">
+		<li class="navbar_item"><a href="Main.html"><p class="title">WikiClone</p></a></li>
+		<li class="navbar_item" style="float:right"><a href="Register.html" class="header_link">Register</a></li>
+		<li class="navbar_item" style="float:right"><a href="Login.html" class="header_link">Login</a></li>
+	</ul>
+</header>
+<main>
+	<div class="container_title">
+		<div class="container">
+			<div class="item_left">
+				<h1>
+					Edit article
+				</h1>
+			</div>
+		</div>
+	</div>
+	<form method="post">
+		<label for="title">Title:</label>
+		<input type="text" id="title" name="title" placeholder="Title..">
+		<label for="about">About:</label>
+		<input type="text" id="about" name="about" placeholder="About..">
+		<label for="intro">Intro:</label>
+		<input type="text" id="intro" name="intro" placeholder="Intro..">
+		<label for="image">Image:</label>
+		<input type="image" id="image" name="image" placeholder="Image..">
+		<h3>Paragraphes:</h3>
+		<hr>
+			<div class="item_paragraph">
+				<div class="container">
+					<div class="item_left">
+						<h4>First paragraph</h4>
+					</div>
+					<div class="item_right">
+						<a class="button_site">Remove</a>
+					</div>
+					<div class="item_right">
+						<a href="EditBlock.html" class="button_site">Edit</a>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="item_paragraph">
+				<div class="container">
+					<div class="item_left">
+						<h4>Second paragraph</h4>
+					</div>
+					<div class="item_right">
+						<a class="button_site">Remove</a>
+					</div>
+					<div class="item_right">
+						<a href="EditBlock.html" class="button_site">Edit</a>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="item_paragraph">
+				<div class="container">
+					<div class="item_left">
+						<h4>Third paragraph</h4>
+					</div>
+					<div class="item_right">
+						<a class="button_site">Remove</a>
+					</div>
+					<div class="item_right">
+						<a href="EditBlock.html" class="button_site">Edit</a>
+					</div>
+				</div>
+			</div>
+			<hr>
+		<input type="submit" value="Submit">
+	</form>
+</main>
+<footer>
+	<p>WikiClone. 2021 - Roman Brizinski</p>
+</footer>
+</body>
