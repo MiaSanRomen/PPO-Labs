@@ -15,7 +15,6 @@ hr{
  }
 .intro{
     width: 60%;
-    float: left;
 }
 .block_info{
     width: 90%;
@@ -28,4 +27,10 @@ h3{
 .content{
     height: 70%;
     margin-bottom: 15%;
+}
+.block_txt_img{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

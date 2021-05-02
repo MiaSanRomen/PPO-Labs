@@ -5,27 +5,29 @@
 </head>
 <body>
 	<header>
-		<ul class="header_navbar">
-			<li class="navbar_item"><a href="Main.html"><p class="title">WikiClone</p></a></li>
-			<li class="navbar_item" style="float:right"><a href="Register.html" class="header_link">Register</a></li>
-			<li class="navbar_item" style="float:right"><a href="Login.html" class="header_link">Login</a></li>
-			<li class="navbar_item" style="float:right">
+		<div class="header_navbar">
+			<a href="Main.html"><p class="title">WikiClone</p></a>
+			<div class="navbar_item">
 				<form method="get">
 					<input type="text" class="search" name="Search" value="Search page">
 					<input type="submit" value="Search" class="button_site" />
 				</form>
-			</li>
-		</ul>
+			</div>
+			<div class="nav">
+				<div class="navbar_item"><a href="Login.html" class="header_link">Login</a></div>
+				<div class="navbar_item"><a href="Register.html" class="header_link">Register</a></div>
+			</div>
+		</div>
 	</header>
 	<main>
 		<div class="container_title">
-			<div class="container">
+			<div class="title_navbar">
 				<div class="item_left">
 					<h1>
 						Welcome to WikiClone!
 					</h1>
 				</div>
-				<div class="item_right">
+				<div class="title_navbar">
 					<blockquote>
 						<h3>
 							History is a teacher of life.
@@ -39,20 +41,16 @@
 			</div>
 		</div>
 		<div>
-			<div class="container_title">
-				<div class="container">
-					<div class="item_left">
-						<h2>
-							Popular articles
-						</h2>
-					</div>
-					<div class="item_right">
-						<a href="EditArticle.html" class="button_site">Create new article</a>
-					</div>
-				</div>
-			</div>
-			<div class="container">
+			<div class="title_navbar">
 				<div class="item_left">
+					<h2>
+						Popular articles
+					</h2>
+				</div>
+				<a href="EditArticle.html" class="button_site">Create new article</a>
+			</div>
+			<ul class="container">
+				<li class="item_left">
 					<div class="card">
 						<img src="css/images/helmet.jpg">
 						<div>
@@ -61,8 +59,8 @@
 							<a href="Article.html" class="button_site">Learn more...</a>
 						</div>
 					</div>
-				</div>
-				<div class="item_left">
+				</li>
+				<li class="item_left">
 					<div class="card">
 						<img src="css/images/leg1.jpg">
 						<div>
@@ -71,8 +69,8 @@
 							<a href="Article.html" class="button_site">Learn more...</a>
 						</div>
 					</div>
-				</div>
-				<div class="item_left">
+				</li>
+				<li class="item_left">
 					<div class="card">
 						<img src="css/images/leg2.jpg">
 						<div>
@@ -81,8 +79,8 @@
 							<a href="Article.html" class="button_site">Learn more...</a>
 						</div>
 					</div>
-				</div>
-				<div class="item_left">
+				</li>
+				<li class="item_left">
 					<div class="card">
 
 						<div class="brd">
@@ -94,8 +92,8 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="item_left">
+				</li>
+				<li class="item_left">
 					<div class="card">
 						<img src="css/images/leg1.jpg">
 						<div>
@@ -104,8 +102,8 @@
 							<a href="Article.html" class="button_site">Learn more...</a>
 						</div>
 					</div>
-				</div>
-				<div class="item_left">
+				</li>
+				<li class="item_left">
 					<div class="card">
 						<img src="css/images/leg2.jpg">
 						<div>
@@ -114,8 +112,8 @@
 							<a href="Article.html" class="button_site">Learn more...</a>
 						</div>
 					</div>
-				</div>
-			</div>
+				</li>
+			</ul>
 		</div>
 	</main>
 	<footer>

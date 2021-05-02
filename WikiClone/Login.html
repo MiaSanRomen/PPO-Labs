@@ -6,11 +6,13 @@
 </head>
 <body>
 <header>
-	<ul class="header_navbar">
-		<li class="navbar_item"><a href="Main.html"><p class="title">WikiClone</p></a></li>
-		<li class="navbar_item" style="float:right"><a href="Register.html" class="header_link">Register</a></li>
-		<li class="navbar_item" style="float:right"><a href="Login.html" class="header_link">Login</a></li>
-	</ul>
+	<div class="header_navbar">
+		<a href="Main.html"><p class="title">WikiClone</p></a>
+		<div class="nav">
+			<div class="navbar_item"><a href="Login.html" class="header_link">Login</a></div>
+			<div class="navbar_item"><a href="Register.html" class="header_link">Register</a></div>
+		</div>
+	</div>
 </header>
 <main>
 	<div class="container_title">
@@ -24,12 +26,12 @@
 	</div>
 	<form method="post">
 		<label for="username">Username:</label>
-		<input type="text" id="username" name="firstname" placeholder="Your nickname..">
+		<input class="input_data" type="text" id="username" name="firstname" placeholder="Your nickname..">
 
 		<label for="password">Password:</label>
-		<input type="password" id="password" name="lastname" placeholder="Your password..">
+		<input class="input_data" type="password" id="password" name="lastname" placeholder="Your password..">
 
-		<input type="submit" value="Log in">
+		<input class="input" type="submit" value="Log in">
 	</form>
 </main>
 <footer>
