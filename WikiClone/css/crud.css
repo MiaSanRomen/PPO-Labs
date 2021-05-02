@@ -1,4 +1,4 @@
-input[type=text], select {
+input[type=text] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -20,11 +20,6 @@ input[type=submit] {
 }
 input[type=submit]:hover {
     background-color: #45a049;
-}
-div {
-    border-radius: 5px;
-    background-color: white;
-    padding: 20px;
 }
 form{
     border: solid black;
