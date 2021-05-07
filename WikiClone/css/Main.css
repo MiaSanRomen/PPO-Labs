@@ -131,3 +131,10 @@ form{
     justify-content: space-between;
     align-items: center;
 }
+.buttons_in_raw{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 180px;
+}
