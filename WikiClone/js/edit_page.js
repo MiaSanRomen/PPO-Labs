@@ -10,31 +10,45 @@ async function createNewArticle() {
         }
     }
 
+    let status = []
+
+    status.push(articles[j])
 
     let input_title = document.getElementById("title")
     let title = input_title.value
     if (title.trim() === "" ) {
         title = articles[j].name
     }
+    status.push(articles[j])
     let input_about = document.getElementById("about")
     let about = input_about.value
     if (about.trim() === "") {
         about = articles[j].about
     }
+    status.push(articles[j])
     let input_intro = document.getElementById("intro")
     let intro = input_intro.value
     if (intro.trim() === "") {
         intro = articles[j].intro
     }
-    let input_image = document.getElementById("image")
+    status.push(articles[j])
 
+    let getFileUrl = JSON.parse(localStorage.getItem("uploadedUrl"));
+    if(getFileUrl === ""){
+
+    }else {
+        articles[j].image = getFileUrl
+        localStorage.setItem("uploadedUrl", JSON.stringify(""));
+    }
 
 
     articles[j].name = title
     articles[j].about = about
     articles[j].intro = intro
 
+    status.push(articles[j])
     localStorage.setItem("articles", JSON.stringify(articles));
+    localStorage.setItem("article_status", JSON.stringify(status));
 }
 
 function checkId(){
@@ -43,7 +57,7 @@ function checkId(){
         fillData(id)
     }else {
         let articles = JSON.parse(localStorage.getItem("articles"));
-        let article = new Article(-1, "Title", "Intro", "About", "css/images/helmet.jpg", []);
+        let article = new Article(-1, "Title", "Intro", "About", "css/images/Article1-1.jpg", []);
         article.id = parseInt(articles[articles.length - 1].id, 10) + 1
         articles.push(article)
         localStorage.setItem("articles", JSON.stringify(articles));
@@ -161,6 +175,18 @@ function new_block(){
     articles[j].blocks.push(block)
     localStorage.setItem("articles", JSON.stringify(articles));
     fillData(id)
+}
+
+function saveFile(){
+    let selectedFile = document.getElementById('image').files[0]
+    if (!selectedFile.type.startsWith('image/')){ return }
+    const reader = new FileReader();
+    reader.onloadend = () => {
+        const base64String = reader.result
+        console.log("we save base64", base64String)
+        localStorage.setItem("uploadedUrl", JSON.stringify(base64String));
+    };
+    reader.readAsDataURL(selectedFile);
 }
 
 checkId()

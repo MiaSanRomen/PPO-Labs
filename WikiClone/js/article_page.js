@@ -48,7 +48,7 @@ async function removeArticle() {
     articles = JSON.parse(localStorage.getItem("articles"));
     articles.pop()
     localStorage.setItem("articles", JSON.stringify(articles));
-    window.location.href = "http://localhost:63342/Article.html/Main.html"
+    window.location.href = "https://wiki-clone-pedia.netlify.app/main"
 }
 
 let id = JSON.parse(localStorage.getItem("current_id"))

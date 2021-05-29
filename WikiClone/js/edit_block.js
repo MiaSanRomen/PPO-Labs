@@ -21,23 +21,29 @@ async function createNewBlock() {
 
     let input_title = document.getElementById("title")
     let title = input_title.value
-    if (title.trim() === "" ) {
-        title = articles[id].name
-    }
+
     let input_about = document.getElementById("about")
     let about = input_about.value
-    if (about.trim() === "") {
-        about = articles[id].about
-    }
     status.push("after fill")
 
     for(let i = 0; i < blocks.length; i++) {
         let item = blocks[i]
         if(item.id == block_id){
             status.push(item)
+            if (title !== ""){
+                articles[article_id].blocks[i].name = title
+            }
+            if (about !== ""){
+                articles[article_id].blocks[i].about = about
+            }
 
-            articles[article_id].blocks[i].name = title
-            articles[article_id].blocks[i].about = about
+            let getFileUrl = JSON.parse(localStorage.getItem("uploadedBlockUrl"));
+            if(getFileUrl === ""){
+
+            }else {
+                articles[article_id].blocks[i].image = getFileUrl
+                localStorage.setItem("uploadedBlockUrl", JSON.stringify(""));
+            }
 
             status.push(articles[article_id].blocks[i].name)
         }
@@ -76,6 +82,18 @@ function fillData(){
     let  about = document.getElementById("about")
     about.placeholder = block.about
 
+}
+
+function saveFile(){
+    let selectedFile = document.getElementById('image').files[0]
+    if (!selectedFile.type.startsWith('image/')){ return }
+    const reader = new FileReader();
+    reader.onloadend = () => {
+        const base64String = reader.result
+        console.log("we save base64", base64String)
+        localStorage.setItem("uploadedBlockUrl", JSON.stringify(base64String));
+    };
+    reader.readAsDataURL(selectedFile);
 }
 
 fillData()

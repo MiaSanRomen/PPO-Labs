@@ -2,11 +2,15 @@ function loadData() {
     localStorage.setItem("current_id", JSON.stringify(-1));
     let articles = []
     articles = JSON.parse(localStorage.getItem("articles"))
+    localStorage.setItem("uploadedUrl", JSON.stringify(""));
+    localStorage.setItem("uploadedBlockUrl", JSON.stringify(""));
 
     //articles = reset()
     if (articles == null) {
         articles = reset()
     }
+    localStorage.setItem("articles", JSON.stringify(articles));
+
 
     fill_search_data()
     let search_articles = []
@@ -23,7 +27,6 @@ function loadData() {
 
 
 
-    localStorage.setItem("articles", JSON.stringify(articles));
     console.log("articles", articles)
     let  ul = document.getElementById("articles_list")
 
@@ -63,7 +66,7 @@ function loadData() {
 
 function reset() {
     let users = []
-
+    localStorage.setItem("search_value", JSON.stringify(""));
     let user = new User(0, "admin", "admin", "admin");
 
     users.push(user)
@@ -156,6 +159,6 @@ function fill_search_data(){
     console.log(text)
 }
 
-fill_search_data()
+
 loadData()
 auth()
