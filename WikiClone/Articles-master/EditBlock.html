@@ -7,7 +7,7 @@
 <body>
 <header>
 	<div class="header_navbar">
-		<a href="Main.html"><p class="title">WikiClone</p></a>
+		<a href="index.html"><p class="title">WikiClone</p></a>
 		<div class="buttons_in_raw">
 			<div class="navbar_item"><a href="Login.html" class="header_link">Login</a></div>
 			<div class="navbar_item"><a href="Register.html" class="header_link">Register</a></div>
@@ -30,14 +30,15 @@
 		<label for="about">Content:</label>
 		<input type="text" id="about" name="content" placeholder="Content..">
 		<label for="image">Image:</label>
-		<input type="image" id="image" name="image" placeholder="Image..">
+		<input type="file" id="image" name="image" placeholder="Image..">
+		<btn onclick="saveFile()" class="button_site">Save image</btn>
 		<input type="submit" value="Submit" onclick="createNewBlock()">
 	</form>
 </main>
 <footer>
 	<p>WikiClone. 2021 - Roman Brizinski</p>
 </footer>
-<script src="./js/models/article.js"></script>
-<script src="./js/models/block.js"></script>
-<script src="./js/edit_block.js"></script>
+<script src="jsodels/article.js"></script>
+<script src="jsodels/block.js"></script>
+<script src="jsdit_block.js"></script>
 </body>
